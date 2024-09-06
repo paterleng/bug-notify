@@ -98,7 +98,7 @@ func Ttttt() {
 func InsertHandle(olddata, newdata *model.DataChanges) {
 	//对比数据，看有什么变化
 	content := "bug \n"
-	project, err := dao.GetProject(newdata.ProjectID)
+	_, err := dao.GetProject(newdata.ProjectID)
 	if err != nil {
 		zap.L().Error("获取项目失败:", zap.Error(err))
 		return
