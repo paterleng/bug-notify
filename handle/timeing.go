@@ -17,9 +17,9 @@ const (
 
 func TimeingTasks() {
 	c := cron.New()
-	c.AddFunc("34 * * * *", func() {
+	c.AddFunc("0 21 * * *", func() {
 		_, err1 := dao.GetStatusNumByID(id1)
-		fmt.Println(err1)
+		fmt.Println("55555555555")
 		nums2, err2 := dao.GetStatusNumByID(id2)
 		if err1 != nil || err2 != nil {
 			zap.L().Error("获取status_id为2的数量失败:", zap.Error(err1))
@@ -39,4 +39,11 @@ func TimeingTasks() {
 		api.SendMessage(data)
 	})
 	c.Start()
+
+	//a, err := dao.GetProject(2)
+	//if err != nil {
+	//	fmt.Println("111111")
+	//} else {
+	//	fmt.Println("2222222" + a)
+	//}
 }

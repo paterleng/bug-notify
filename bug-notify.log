@@ -161,3 +161,13 @@
 {"level":"ERROR","time":"2024-09-06T11:23:17.218+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
 {"level":"INFO","time":"2024-09-06T11:23:55.492+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"ERROR","time":"2024-09-06T11:23:55.492+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T15:23:33.772+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T15:23:33.787+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T15:24:15.083+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T15:24:15.085+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T15:26:08.403+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T15:26:08.404+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T15:30:03.785+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T15:30:03.807+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T15:30:12.543+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T15:30:12.543+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
