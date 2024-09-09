@@ -238,3 +238,91 @@
 {"level":"INFO","time":"2024-09-09T15:01:01.436+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-09T15:01:45.269+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-09T15:07:28.069+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-06T10:19:49.539+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:19:49.548+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:21:46.149+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:21:46.151+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:24:10.745+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:24:10.746+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:24:17.780+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:24:17.782+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:26:00.430+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:26:00.430+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:26:58.521+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:26:58.522+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:27:21.217+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:27:21.217+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:28:37.581+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:28:37.582+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:31:10.487+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:31:10.488+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:31:34.467+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:31:34.506+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:33:15.346+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:33:15.347+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:34:13.463+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:34:13.463+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:36:35.093+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:36:35.128+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:40:06.167+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:40:06.201+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:40:40.329+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:40:40.372+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:40:46.221+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:40:46.221+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:41:49.218+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:41:49.245+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:43:16.094+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:43:16.096+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:44:12.287+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:44:12.288+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:50:02.419+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:50:02.437+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:51:09.694+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:51:09.695+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:57:37.425+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:57:37.451+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T10:59:09.744+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T10:59:09.745+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:00:11.714+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:00:11.716+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:00:40.728+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:00:40.730+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:01:06.694+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:01:06.695+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:01:55.126+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:01:55.126+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:05:08.783+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:05:08.823+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:05:38.780+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:05:38.780+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:07:26.399+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:07:26.400+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:07:47.220+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:07:47.220+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:08:48.823+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:08:48.824+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:09:20.876+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:09:20.877+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:10:12.456+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:10:12.457+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:10:46.476+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:10:46.477+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:11:07.045+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:11:07.045+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:22:28.217+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:22:28.241+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:23:17.217+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:23:17.218+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T11:23:55.492+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T11:23:55.492+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T15:23:33.772+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T15:23:33.787+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T15:24:15.083+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T15:24:15.085+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T15:26:08.403+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T15:26:08.404+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T15:30:03.785+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T15:30:03.807+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-06T15:30:12.543+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-06T15:30:12.543+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}

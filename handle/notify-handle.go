@@ -79,6 +79,7 @@ func (h *MyEventHandler) OnRow(e *canal.RowsEvent) error {
 	fmt.Println("表%s", e.Table)
 	fmt.Println("数据", e.Rows)
 	fmt.Println("我是action", e.Action)
+	//fmt.Println("我是row", e.Rows[0][2])
 	s := e.String()
 	fmt.Println("我是s", s)
 
