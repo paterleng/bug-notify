@@ -171,3 +171,13 @@
 {"level":"ERROR","time":"2024-09-06T15:30:03.807+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
 {"level":"INFO","time":"2024-09-06T15:30:12.543+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"ERROR","time":"2024-09-06T15:30:12.543+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-09T14:37:10.541+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-09T14:37:10.588+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-09T14:37:34.588+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-09T14:37:34.588+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-09T14:44:46.883+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-09T14:44:46.884+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-09T14:46:54.664+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-09T14:46:54.664+0800","caller":"init-tool/init-tools.go:21","msg":"init snowID failed,err: ","error":"parsing time \"\" as \"2006-01-02\": cannot parse \"\" as \"2006\""}
+{"level":"INFO","time":"2024-09-09T14:48:30.105+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-09T14:48:30.119+0800","caller":"init-tool/init-tools.go:26","msg":"init mysql failed,err: ","error":"dial tcp: lookup tcp/%!d(string=3308): unknown port"}

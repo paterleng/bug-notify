@@ -16,11 +16,11 @@ func Init() {
 		fmt.Errorf("init logger failed,err: %v", err)
 		return
 	}
-	err = SnowIDInit()
-	if err != nil {
-		lg.Error("init snowID failed,err: ", zap.Error(err))
-		return
-	}
+	//err = SnowIDInit()
+	//if err != nil {
+	//	lg.Error("init snowID failed,err: ", zap.Error(err))
+	//	return
+	//}
 	err = MysqlInit()
 	if err != nil {
 		lg.Error("init mysql failed,err: ", zap.Error(err))
