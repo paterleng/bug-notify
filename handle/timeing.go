@@ -4,6 +4,7 @@ import (
 	"bug-notify/api"
 	"bug-notify/dao"
 	"bug-notify/model"
+	"fmt"
 	"github.com/andeya/goutil/calendar/cron"
 	"go.uber.org/zap"
 	"strconv"
@@ -36,7 +37,9 @@ func TimeingTasks() {
 		data := model.SendMsg{
 			Content: content,
 			IsAtAll: true,
+			MsgType: "markdown",
 		}
+		fmt.Println(data.MsgType)
 		api.SendMessage(data)
 	})
 	c.Start()
