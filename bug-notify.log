@@ -377,3 +377,51 @@
 {"level":"INFO","time":"2024-09-09T19:45:07.171+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-09T19:51:51.242+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-09T19:52:30.848+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T15:29:33.604+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T15:50:29.147+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T15:59:33.752+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-09T16:00:54.036+0800","caller":"handle/notify-handle.go:139","msg":"消息发送失败:","error":"description:发送速率过快；solution:发送速度请保持在 100000/min*robotCode "}
+{"level":"INFO","time":"2024-09-09T16:04:04.909+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:04:28.657+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:06:26.401+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:06:38.776+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:07:37.583+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:08:09.639+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:18:51.726+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:21:16.818+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:22:30.172+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:24:41.872+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:25:36.566+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:26:25.469+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:28:21.250+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:31:23.256+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:38:23.512+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:42:07.226+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T16:43:26.700+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T17:02:45.388+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T17:03:26.697+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-09T17:03:26.718+0800","caller":"bug-notify/main.go:15","msg":"任务中心异常，请联系管理员处理。"}
+{"level":"INFO","time":"2024-09-09T17:09:22.774+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T17:21:06.950+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T17:24:08.032+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"PANIC","time":"2024-09-09T17:24:08.060+0800","caller":"bug-notify/main.go:35","msg":"数据中心异常，请联系黄本聪处理","error":"%!(EXTRA string=chucuol;)"}
+{"level":"INFO","time":"2024-09-09T17:24:25.496+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"PANIC","time":"2024-09-09T17:24:25.521+0800","caller":"bug-notify/main.go:34","msg":"数据中心异常，请联系黄本聪处理"}
+{"level":"INFO","time":"2024-09-09T17:25:29.530+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-09T17:25:29.576+0800","caller":"bug-notify/main.go:34","msg":"数据中心异常，请联系黄本聪处理"}
+{"level":"INFO","time":"2024-09-09T17:33:43.484+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-09T17:33:43.524+0800","caller":"bug-notify/main.go:36","msg":"数据中心异常，请联系管理员处理"}
+{"level":"INFO","time":"2024-09-09T17:34:13.371+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-09T17:34:13.420+0800","caller":"bug-notify/main.go:36","msg":"数据中心异常，请联系管理员处理"}
+{"level":"INFO","time":"2024-09-09T17:37:07.395+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:00:13.036+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:01:25.296+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:02:06.480+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:04:33.091+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:05:30.954+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:08:30.633+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:09:06.839+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:11:10.827+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:11:45.486+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:13:23.430+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-09T20:15:43.275+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}

@@ -107,40 +107,42 @@ func NotifyHandle() {
 
 	c.SetEventHandler(&MyEventHandler{})
 
-	//masterPos, err := c.GetMasterPos()
-	//masterPos := mysql.Position{
-	//	Pos: 157,
+	//file, err := os.ReadFile("pos.txt")
+	//if err != nil {
+	//	zap.L().Error("读文件失败", zap.Error(err))
+	//
 	//}
-	file, err := os.ReadFile("pos.txt")
-	if err != nil {
-		zap.L().Error("读文件失败", zap.Error(err))
+	//var pos model.Potion
+	//err = json.Unmarshal(file, &pos)
+	//if err != nil {
+	//	zap.L().Error("反序列化失败:", zap.Error(err))
+	//}
+	//p := mysql.Position{
+	//	Name: pos.Name,
+	//	Pos:  pos.Pos,
+	//}
+	//c.RunFrom(p)
+	masterPos, err := c.GetMasterPos()
+	c.RunFrom(masterPos)
 
-	}
-	var pos model.Potion
-	err = json.Unmarshal(file, &pos)
-	if err != nil {
-		zap.L().Error("反序列化失败:", zap.Error(err))
-	}
-	p := mysql.Position{
-		Name: pos.Name,
-		Pos:  pos.Pos,
-	}
-	c.RunFrom(p)
-	// Start canal
-	//c.Run()
 }
 
 func Ttttt() {
 	data := model.SendMsg{
-		AtMobiles: []string{"17638641623"},
-		IsAtAll:   false,
-		Content:   "bug",
+		//AtMobiles: []string{"17638641623"},
+		//IsAtAll:   false,
+		Content: "bug",
 	}
-	err := api.SendMessage(data)
-	if err != nil {
-		zap.L().Error("消息发送失败:", zap.Error(err))
-		return
-	}
+	//panic("chucuol;")
+	take, _ := dao.GetUserInfoByUserID(12)
+	fmt.Println(take)
+	fmt.Println(data.AtMobiles)
+
+	//err := api.SendMessage(data)
+	//if err != nil {
+	//	zap.L().Error("消息发送失败:", zap.Error(err))
+	//	return
+	//}
 }
 
 func InsertHandle(olddata *model.DataChanges, position mysql.Position) {
@@ -161,17 +163,18 @@ func InsertHandle(olddata *model.DataChanges, position mysql.Position) {
 	data := model.SendMsg{
 		AtMobiles: []string{phone},
 		IsAtAll:   false,
-		Content: fmt.Sprintf("## Bug\n"+
+		Content: fmt.Sprintf("### 温馨提醒\n"+
 			"\n**所属项目**：%s  "+
 			"\n**bug主题**：%s  "+
 			"\n**创建人**：%s"+
-			"\n**处理人**：%s", project, olddata.Subject, createName, takeName),
+			"\n**处理人**：%s"+
+			"\n @%s", project, olddata.Subject, createName, takeName, phone),
 	}
 	file, err := os.ReadFile("pos.txt")
 	if err != nil {
 		zap.L().Error("读文件失败", zap.Error(err))
 	}
-	var pos mysql.Position
+	var pos model.Potion
 	json.Unmarshal(file, pos)
 	err = api.SendMessage(data)
 	if err != nil {
@@ -202,6 +205,7 @@ func UpdateHandle(olddata, newdata *model.DataChanges, position mysql.Position) 
 	}
 	phone, err := dao.GetPhoneByUserID(newdata.AssignedToID)
 	if err != nil {
+		zap.L().Error("获取手机号失败:", zap.Error(err))
 		return
 	}
 	takeName, createName, err := GetUserName(newdata.AssignedToID, newdata.AuthorID)
@@ -215,7 +219,8 @@ func UpdateHandle(olddata, newdata *model.DataChanges, position mysql.Position) 
 			"\n**所属项目**：%s  "+
 			"\n**bug主题**：%s  "+
 			"\n**创建人**：%s \n"+
-			"\n**处理人**：%s \n", project, newdata.Subject, createName, takeName),
+			"\n**处理人**：%s \n"+
+			"\n @%s \n", project, olddata.Subject, createName, takeName, phone),
 	}
 	file, err := os.ReadFile("pos.txt")
 	if err != nil {
@@ -249,17 +254,24 @@ func GetData(e *canal.RowsEvent) (*model.DataChanges, *model.DataChanges) {
 	oldData.ProjectID = e.Rows[0][2].(int32)
 	oldData.Subject = e.Rows[0][3].(string)
 	oldData.StatusID = e.Rows[0][7].(int32)
-	oldData.AssignedToID = e.Rows[0][8].(int32)
+	if e.Rows[0][8] != nil {
+		oldData.AssignedToID = e.Rows[0][8].(int32)
+	} else {
+		oldData.AssignedToID = 0
+	}
 	oldData.AuthorID = e.Rows[0][11].(int32)
 	newData := new(model.DataChanges)
-	if e.Action != "insert" {
+	if e.Action == "update" {
 		newData.ProjectID = e.Rows[1][2].(int32)
 		newData.Subject = e.Rows[1][3].(string)
 		newData.StatusID = e.Rows[1][7].(int32)
-		newData.AssignedToID = e.Rows[1][8].(int32)
+		if e.Rows[1][8] != nil {
+			oldData.AssignedToID = e.Rows[1][8].(int32)
+		} else {
+			oldData.AssignedToID = 0
+		}
 		newData.AuthorID = e.Rows[1][11].(int32)
 	}
-
 	return oldData, newData
 }
 
@@ -290,11 +302,11 @@ func GetUserName(takeUserID, createUserID int32) (takeName, createName string, e
 	if err != nil {
 		return "", "", err
 	}
-	takeName = take.LastName + take.FirstName
+	takeName = take.Lastname + take.Firstname
 	create, err := dao.GetUserInfoByUserID(createUserID)
 	if err != nil {
 		return takeName, "", err
 	}
-	createName = create.LastName + create.FirstName
+	createName = create.Lastname + create.Firstname
 	return
 }
