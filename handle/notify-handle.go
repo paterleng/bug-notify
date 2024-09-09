@@ -1,13 +1,18 @@
 package handle
 
 import (
+	"bufio"
 	"bug-notify/api"
 	"bug-notify/dao"
 	init_tool "bug-notify/init-tool"
 	"bug-notify/model"
+	"encoding/json"
 	"fmt"
 	"github.com/go-mysql-org/go-mysql/canal"
+	"github.com/go-mysql-org/go-mysql/mysql"
 	"go.uber.org/zap"
+	"os"
+	"strconv"
 )
 
 type MyEventHandler struct {
@@ -28,31 +33,52 @@ func (h *MyEventHandler) OnRow(e *canal.RowsEvent) error {
 	}
 
 	if _, ok := tableMap[e.Table.Name]; ok {
+		cfg := canal.NewDefaultConfig()
+		cfg.Addr = init_tool.Conf.MySQLConfig.Host + ":" + strconv.Itoa(init_tool.Conf.MySQLConfig.Port)
+		cfg.User = init_tool.Conf.MySQLConfig.User
+		cfg.Password = init_tool.Conf.MySQLConfig.Password
+		cfg.Dump.TableDB = init_tool.Conf.Table.TableDB
+		cfg.Dump.Tables = init_tool.Conf.Table.TableName
+
+		c, err := canal.NewCanal(cfg)
+
+		if err != nil {
+			zap.L().Fatal("shibai")
+		}
+		defer c.Close()
+
+		c.SetEventHandler(&MyEventHandler{})
+
+		masterPos, err := c.GetMasterPos()
+		var pos uint32
+		if e.Header != nil {
+			pos = e.Header.LogPos
+			fmt.Println("header", e.Header)
+		}
+		p := mysql.Position{
+			Name: masterPos.Name,
+			Pos:  pos,
+		}
 
 		/**
 		发布的时候，转发给指定的人
 		更新的时候，转发内容为更改了哪些内容
 		获取到一些数据，然后进行入库，消息通知的操作，先通知，再入库
 		*/
-		fmt.Println("表%s", e.Table)
-		fmt.Println("数据", e.Rows)
-		//pos := e.Header.LogPos
-		//action := e.Action
-		//olddata, newdata := GetData(e)
-		////对比处理的数据差异
-		//switch action {
-		//case "insert":
-		//	InsertHandle(olddata, newdata)
-		//case "update":
-		//	UpdateHandle(olddata, newdata)
-		//}
-	}
-	if e.Header != nil {
-		fmt.Println("header", e.Header)
-	}
 
+		action := e.Action
+		olddata, newdata := GetData(e)
+		//对比处理的数据差异
+		switch action {
+		case "insert":
+			InsertHandle(olddata, p)
+		case "update":
+			UpdateHandle(olddata, newdata, p)
+		}
+	}
+	fmt.Println("表%s", e.Table)
+	fmt.Println("数据", e.Rows)
 	fmt.Println("我是action", e.Action)
-	//fmt.Println("我是row", e.Rows[0][2])
 	s := e.String()
 	fmt.Println("我是s", s)
 
@@ -67,7 +93,7 @@ func (h *MyEventHandler) String() string {
 func NotifyHandle() {
 	//在项目启动的时候记录指针的位置，用于下次启动时使用
 	cfg := canal.NewDefaultConfig()
-	cfg.Addr = init_tool.Conf.MySQLConfig.Host + ":" + init_tool.Conf.MySQLConfig.Port
+	cfg.Addr = init_tool.Conf.MySQLConfig.Host + ":" + strconv.Itoa(init_tool.Conf.MySQLConfig.Port)
 	cfg.User = init_tool.Conf.MySQLConfig.User
 	cfg.Password = init_tool.Conf.MySQLConfig.Password
 	cfg.Dump.TableDB = init_tool.Conf.Table.TableDB
@@ -80,77 +106,194 @@ func NotifyHandle() {
 
 	c.SetEventHandler(&MyEventHandler{})
 
-	masterPos, err := c.GetMasterPos()
+	//masterPos, err := c.GetMasterPos()
+	//masterPos := mysql.Position{
+	//	Pos: 157,
+	//}
+	file, err := os.ReadFile("pos.txt")
+	if err != nil {
+		zap.L().Error("读文件失败", zap.Error(err))
 
-	c.RunFrom(masterPos)
+	}
+	var pos model.Potion
+	err = json.Unmarshal(file, &pos)
+	if err != nil {
+		zap.L().Error("反序列化失败:", zap.Error(err))
+	}
+	p := mysql.Position{
+		Name: pos.Name,
+		Pos:  pos.Pos,
+	}
+	c.RunFrom(p)
 	// Start canal
 	//c.Run()
 }
 
 func Ttttt() {
 	data := model.SendMsg{
-		IsAtAll: true,
-		Content: "test",
+		AtMobiles: []string{"17638641623"},
+		IsAtAll:   false,
+		Content:   "bug",
 	}
-	api.SendMessage(data)
+	err := api.SendMessage(data)
+	if err != nil {
+		zap.L().Error("消息发送失败:", zap.Error(err))
+		return
+	}
 }
 
-func InsertHandle(olddata, newdata *model.DataChanges) {
+func InsertHandle(olddata *model.DataChanges, position mysql.Position) {
 	//对比数据，看有什么变化
-	content := "bug \n"
+	project, err := dao.GetProject(olddata.ProjectID)
+	if err != nil {
+		zap.L().Error("获取项目失败:", zap.Error(err))
+		return
+	}
+	phone, err := dao.GetPhoneByUserID(olddata.AssignedToID)
+	if err != nil {
+		return
+	}
+	takeName, createName, err := GetUserName(olddata.AssignedToID, olddata.AuthorID)
+	if err != nil {
+		return
+	}
+	data := model.SendMsg{
+		AtMobiles: []string{phone},
+		IsAtAll:   false,
+		Content: fmt.Sprintf("## Bug\n"+
+			"\n**所属项目**：%s  "+
+			"\n**bug主题**：%s  "+
+			"\n**创建人**：%s"+
+			"\n**处理人**：%s", project, olddata.Subject, createName, takeName),
+	}
+	file, err := os.ReadFile("pos.txt")
+	if err != nil {
+		zap.L().Error("读文件失败", zap.Error(err))
+	}
+	var pos mysql.Position
+	json.Unmarshal(file, pos)
+	err = api.SendMessage(data)
+	if err != nil {
+		zap.L().Error("消息发送失败:", zap.Error(err))
+		return
+	}
+	if pos.Pos != 0 {
+		//存储文件
+		marshal, err := json.Marshal(position)
+		if err != nil {
+			zap.L().Error("转换失败:", zap.Error(err))
+			return
+		}
+		err = StroageFile(string(marshal))
+		if err != nil {
+			zap.L().Error("文件写入失败:", zap.Error(err))
+			return
+		}
+	}
+}
+
+func UpdateHandle(olddata, newdata *model.DataChanges, position mysql.Position) {
+	//对比数据，看有什么变化
 	project, err := dao.GetProject(newdata.ProjectID)
 	if err != nil {
 		zap.L().Error("获取项目失败:", zap.Error(err))
 		return
 	}
-	content = content + "所属项目：" + newdata.Subject + "\n"
-	content = content + "bug主题：" + newdata.Subject + "\n"
-	content = content + "bug描述：" + newdata.Description + "\n"
-	if olddata.StatusID != newdata.StatusID {
-		//	查看当前状态
-		status, err := dao.GetStatusByID(newdata.StatusID)
-		if err != nil {
-			zap.L().Error("获取状态失败:", zap.Error(err))
-			return
-		}
-		content = content + "状态：" + status + "\n"
-	}
-
 	phone, err := dao.GetPhoneByUserID(newdata.AssignedToID)
 	if err != nil {
 		return
 	}
-	userid, err := api.GetUserIDByPhone(phone)
-	data := model.SendMsg{
-		AtUserID: userid,
-		IsAtAll:  true,
-		Content:  "test",
+	takeName, createName, err := GetUserName(newdata.AssignedToID, newdata.AuthorID)
+	if err != nil {
+		return
 	}
-	api.SendMessage(data)
-}
+	data := model.SendMsg{
+		AtMobiles: []string{phone},
+		IsAtAll:   false,
+		Content: fmt.Sprintf("## Bug\n"+
+			"\n**所属项目**：%s  "+
+			"\n**bug主题**：%s  "+
+			"\n**创建人**：%s \n"+
+			"\n**处理人**：%s \n", project, newdata.Subject, createName, takeName),
+	}
+	file, err := os.ReadFile("pos.txt")
+	if err != nil {
+		zap.L().Error("读文件失败", zap.Error(err))
+	}
+	var pos mysql.Position
+	json.Unmarshal(file, pos)
+	err = api.SendMessage(data)
+	if err != nil {
+		zap.L().Error("消息发送失败:", zap.Error(err))
+		return
+	}
+	if pos.Pos != 0 {
+		//存储文件
+		marshal, err := json.Marshal(position)
+		if err != nil {
+			zap.L().Error("转换失败:", zap.Error(err))
+			return
+		}
+		err = StroageFile(string(marshal))
+		if err != nil {
+			zap.L().Error("文件写入失败:", zap.Error(err))
+			return
+		}
 
-func UpdateHandle(olddata, newdata *model.DataChanges) {
-
-}
-
-func DataHandle() {
-
+	}
 }
 
 func GetData(e *canal.RowsEvent) (*model.DataChanges, *model.DataChanges) {
 	oldData := new(model.DataChanges)
-	oldData.ProjectID = e.Rows[0][2].(int)
+	oldData.ProjectID = e.Rows[0][2].(int32)
 	oldData.Subject = e.Rows[0][3].(string)
-	oldData.Description = e.Rows[0][4].(string)
-	oldData.StatusID = e.Rows[0][7].(int)
-	oldData.AssignedToID = e.Rows[0][8].(int)
-	oldData.AuthorID = e.Rows[0][11].(int)
+	oldData.StatusID = e.Rows[0][7].(int32)
+	oldData.AssignedToID = e.Rows[0][8].(int32)
+	oldData.AuthorID = e.Rows[0][11].(int32)
 	newData := new(model.DataChanges)
-	newData.ProjectID = e.Rows[1][2].(int)
-	newData.Subject = e.Rows[1][3].(string)
-	newData.Description = e.Rows[1][4].(string)
-	newData.StatusID = e.Rows[1][7].(int)
-	newData.AssignedToID = e.Rows[1][8].(int)
-	newData.AuthorID = e.Rows[1][11].(int)
+	if e.Action != "insert" {
+		newData.ProjectID = e.Rows[1][2].(int32)
+		newData.Subject = e.Rows[1][3].(string)
+		newData.StatusID = e.Rows[1][7].(int32)
+		newData.AssignedToID = e.Rows[1][8].(int32)
+		newData.AuthorID = e.Rows[1][11].(int32)
+	}
+
 	return oldData, newData
+}
+
+func StroageFile(data string) (err error) {
+	file, err := os.OpenFile("pos.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
+	if err != nil {
+		return
+	}
+	defer file.Close()
+	writer := bufio.NewWriter(file)
+
+	_, err = writer.WriteString(data)
+	if err != nil {
+		return
+	}
+
+	err = writer.Flush()
+	if err != nil {
+		return
+	}
+
+	return nil
+}
+
+// 拿到发布者和接收者用户名
+func GetUserName(takeUserID, createUserID int32) (takeName, createName string, err error) {
+	take, err := dao.GetUserInfoByUserID(takeUserID)
+	if err != nil {
+		return "", "", err
+	}
+	takeName = take.LastName + take.FirstName
+	create, err := dao.GetUserInfoByUserID(createUserID)
+	if err != nil {
+		return takeName, "", err
+	}
+	createName = create.LastName + create.FirstName
+	return
 }
