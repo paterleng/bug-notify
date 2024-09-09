@@ -20,7 +20,7 @@ func GetProject(id int32) (project string, err error) {
 	return
 }
 func GetUserInfoByUserID(id int32) (name model.UserName, err error) {
-	err = init_tool.DB.Table("users").Where("id = ?", id).Find(&name).Error
+	err = init_tool.DB.Table("users").Select("lastname", "firstname").Where("id = ?", id).Find(&name).Error
 	return
 }
 

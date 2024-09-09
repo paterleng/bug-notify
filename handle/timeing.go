@@ -31,9 +31,9 @@ func TimeingTasks() {
 		//content = content + "未处理：" + strconv.Itoa(int(nums1)) + "\n"
 		content = content + "处理中：" + strconv.Itoa(int(nums2)) + "\n"
 		data := model.SendMsg{
-			AtUserID: "",
-			Content:  content,
-			IsAtAll:  true,
+			//AtUserID: "",
+			Content: content,
+			IsAtAll: true,
 		}
 		fmt.Println(content)
 		api.SendMessage(data)

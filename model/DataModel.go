@@ -1,7 +1,5 @@
 package model
 
-import "gorm.io/gorm"
-
 type DataChanges struct {
 	ProjectID    int32  `json:"project_id"`     //项目ID
 	Subject      string `json:"subject"`        //标题
@@ -17,16 +15,10 @@ type DingResponseCommon struct {
 }
 
 type SendMsg struct {
-	AtMobiles []string `json:"atMobiles"`
+	AtMobiles []string `json:"at_mobiles"`
 	//AtUserID  string     `json:"at_user_id"`
 	Content string `json:"content"`
 	IsAtAll bool   `json:"is_at_all"`
-}
-type AtMobile struct {
-	gorm.Model
-	AtMobile string `json:"atMobile"`
-	Name     string `json:"name"`
-	AtID     uint   //AtMobile属于At，打上标签
 }
 type Potion struct {
 	Name string `json:"Name"`
@@ -34,6 +26,6 @@ type Potion struct {
 }
 
 type UserName struct {
-	LastName  string `json:"lastname"`
-	FirstName string `json:"firstname"`
+	Lastname  string `json:"lastname"`
+	Firstname string `json:"firstname"`
 }
