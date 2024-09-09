@@ -11,31 +11,35 @@ import (
 )
 
 const (
-	NNTPROCESSEDID = 2
+	NOTPROCESSEDID = 2
 	PROCESSINGID   = 3
 )
 
 func TimeingTasks() {
 	c := cron.New()
-	c.AddFunc("21 * * * *", func() {
-		_, err1 := dao.GetStatusNumByID(NNTPROCESSEDID)
-		//fmt.Println("55555555555")
-		nums2, err2 := dao.GetStatusNumByID(PROCESSINGID)
+	c.AddFunc("0 21 * * *", func() {
+		notProceddedNums, err1 := dao.GetStatusNumByID(NOTPROCESSEDID)
+		processingNums, err2 := dao.GetStatusNumByID(PROCESSINGID)
 		if err1 != nil || err2 != nil {
 			zap.L().Error("获取status_id为2的数量失败:", zap.Error(err1))
 			zap.L().Error("获取status_id为3的数量失败:", zap.Error(err2))
 			//fmt.Println("sssss \n")
 			return
 		}
-		content := "status_id nums \n"
-		//content = content + "未处理：" + strconv.Itoa(int(nums1)) + "\n"
-		content = content + "处理中：" + strconv.Itoa(int(nums2)) + "\n"
+		//var content strings.Builder
+		//content.WriteString("## status_id nums \n")
+		//content.WriteString("**未处理**：")
+
+		content := "## 事务状态统计 \n"
+		content = content + "**未处理**：" + strconv.Itoa(int(notProceddedNums))
+		content = content + "\n \n **处理中**：" + strconv.Itoa(int(processingNums))
+		content = content + "\n \n @所有人"
 		data := model.SendMsg{
-			AtUserID: "",
-			Content:  content,
-			IsAtAll:  true,
+			Content: content,
+			IsAtAll: true,
+			MsgType: "markdown",
 		}
-		fmt.Println(content)
+		fmt.Println(data.MsgType)
 		api.SendMessage(data)
 	})
 	c.Start()

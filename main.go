@@ -16,7 +16,7 @@ func main() {
 
 	//handle.Ttttt()
 
-	go handle.NotifyHandle()
+	//go handle.NotifyHandle()
 	go handle.TimeingTasks()
 	engine.Run(init_tool.Conf.ProjectConfig.Address + ":" + init_tool.Conf.ProjectConfig.Port)
 

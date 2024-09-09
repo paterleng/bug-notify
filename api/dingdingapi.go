@@ -25,11 +25,22 @@ func SendMessage(data model.SendMsg) error {
 			"isAtAll":   data.IsAtAll,
 		}
 	}
-	msg["msgtype"] = "markdown"
-	msg["markdown"] = map[string]interface{}{
-		"title": "bug",
-		"text":  data.Content,
+
+	msg["msgtype"] = data.MsgType
+	if data.MsgType == "markdowny" {
+		msg[data.MsgType] = map[string]interface{}{
+			"title": "bug",
+			"text":  data.Content,
+		}
+	} else {
+		msg[data.MsgType] = map[string]interface{}{
+			"title":       "bug",
+			"text":        data.Content,
+			"singleTitle": "bug地址",
+			"singleURL":   data.Url,
+		}
 	}
+
 	b, _ = json.Marshal(msg)
 	resp, err := http.Post(URL, "application/json", bytes.NewBuffer(b))
 	if err != nil {

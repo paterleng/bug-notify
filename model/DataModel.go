@@ -18,6 +18,8 @@ type DingResponseCommon struct {
 
 type SendMsg struct {
 	AtMobiles []string `json:"atMobiles"`
+	MsgType   string   `json:"msgtype"`
+	Url       string   `json:"url"`
 	//AtUserID  string     `json:"at_user_id"`
 	Content string `json:"content"`
 	IsAtAll bool   `json:"is_at_all"`
