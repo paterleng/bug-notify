@@ -22,3 +22,9 @@ var ProcessorMap = map[int32]bool{
 	NOTPROCESSED: true,
 	REOPEN:       true,
 }
+
+const NOSPECIFIED = "未指定"
+
+const POSFILENAME = "pos.txt"
+
+const UPDATE = "update"

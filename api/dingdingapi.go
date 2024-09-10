@@ -1,6 +1,7 @@
 package api
 
 import (
+	init_tool "bug-notify/init-tool"
 	"bug-notify/model"
 	"bytes"
 	"encoding/json"
@@ -11,7 +12,7 @@ import (
 )
 
 func SendMessage(data model.SendMsg) error {
-	URL := "https://oapi.dingtalk.com/robot/send?access_token=8ff6cde9a01910e897cb6461e75bd515ed9d683cc4924aad9439fda3e9689de1"
+	URL := init_tool.Conf.Robot.URL
 	b := []byte{}
 	msg := map[string]interface{}{}
 	//@的人
