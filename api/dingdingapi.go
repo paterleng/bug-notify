@@ -27,7 +27,7 @@ func SendMessage(data model.SendMsg) error {
 	}
 
 	msg["msgtype"] = data.MsgType
-	if data.MsgType == "markdowny" {
+	if data.MsgType == "markdown" {
 		msg[data.MsgType] = map[string]interface{}{
 			"title": "bug",
 			"text":  data.Content,
@@ -36,7 +36,7 @@ func SendMessage(data model.SendMsg) error {
 		msg[data.MsgType] = map[string]interface{}{
 			"title":       "bug",
 			"text":        data.Content,
-			"singleTitle": "bug地址",
+			"singleTitle": "问题详情",
 			"singleURL":   data.Url,
 		}
 	}
