@@ -1,6 +1,7 @@
 package model
 
 type DataChanges struct {
+	ID           int32  `json:"id"`
 	ProjectID    int32  `json:"project_id"`     //项目ID
 	Subject      string `json:"subject"`        //标题
 	Description  string `json:"description"`    //问题描述
@@ -18,9 +19,8 @@ type SendMsg struct {
 	AtMobiles []string `json:"at_mobiles"`
 	MsgType   string   `json:"msgtype"`
 	Url       string   `json:"url"`
-	//AtUserID  string     `json:"at_user_id"`
-	Content string `json:"content"`
-	IsAtAll bool   `json:"is_at_all"`
+	Content   string   `json:"content"`
+	IsAtAll   bool     `json:"is_at_all"`
 }
 type Potion struct {
 	Name string `json:"Name"`
