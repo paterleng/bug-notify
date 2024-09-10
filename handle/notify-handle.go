@@ -22,30 +22,16 @@ type MyEventHandler struct {
 }
 
 func (h *MyEventHandler) OnRow(e *canal.RowsEvent) error {
-	//根据表来判断是否处理这条数据
-	//监控到变化后进行消息通知
-	//通过header来判断是否为空，来判断是否是新数据
-
-	/*
-		创建个map存储要监控的表
-	*/
 	tableMap := make(map[string]int)
 	for _, t := range init_tool.Conf.Table.TableName {
 		tableMap[t]++
 	}
 
 	if _, ok := tableMap[e.Table.Name]; ok {
-		cfg := canal.NewDefaultConfig()
-		cfg.Addr = init_tool.Conf.MySQLConfig.Host + ":" + strconv.Itoa(init_tool.Conf.MySQLConfig.Port)
-		cfg.User = init_tool.Conf.MySQLConfig.User
-		cfg.Password = init_tool.Conf.MySQLConfig.Password
-		cfg.Dump.TableDB = init_tool.Conf.Table.TableDB
-		cfg.Dump.Tables = init_tool.Conf.Table.TableName
-
-		c, err := canal.NewCanal(cfg)
-
+		c, err := init_tool.GoMysqlConn()
 		if err != nil {
-			zap.L().Fatal("shibai")
+			zap.L().Fatal("创建连接失败")
+			return err
 		}
 		defer c.Close()
 
@@ -62,30 +48,18 @@ func (h *MyEventHandler) OnRow(e *canal.RowsEvent) error {
 			Pos:  pos,
 		}
 
-		/**
-		发布的时候，转发给指定的人
-		更新的时候，转发内容为更改了哪些内容
-		获取到一些数据，然后进行入库，消息通知的操作，先通知，再入库
-		*/
-
 		action := e.Action
 		olddata, newdata := GetData(e)
-		//对比处理的数据差异
 		switch action {
-		//case "insert":
-		//	InsertHandle(olddata, p)
-		case "update":
+		case controller.UPDATE:
 			UpdateHandle(olddata, newdata, p)
 		}
 	}
 	fmt.Println("表%s", e.Table)
 	fmt.Println("数据", e.Rows)
 	fmt.Println("我是action", e.Action)
-	//fmt.Println("我是row", e.Rows[0][2])
 	s := e.String()
 	fmt.Println("我是s", s)
-
-	//log.Infof("%s %v\n", e.Action, e.Rows)
 	return nil
 }
 
@@ -94,22 +68,15 @@ func (h *MyEventHandler) String() string {
 }
 
 func NotifyHandle() {
-	//在项目启动的时候记录指针的位置，用于下次启动时使用
-	cfg := canal.NewDefaultConfig()
-	cfg.Addr = init_tool.Conf.MySQLConfig.Host + ":" + strconv.Itoa(init_tool.Conf.MySQLConfig.Port)
-	cfg.User = init_tool.Conf.MySQLConfig.User
-	cfg.Password = init_tool.Conf.MySQLConfig.Password
-	cfg.Dump.TableDB = init_tool.Conf.Table.TableDB
-	cfg.Dump.Tables = init_tool.Conf.Table.TableName
-
-	c, err := canal.NewCanal(cfg)
+	c, err := init_tool.GoMysqlConn()
 	if err != nil {
-		zap.L().Fatal("shibai")
+		zap.L().Fatal("创建连接失败")
+		return
 	}
 
 	c.SetEventHandler(&MyEventHandler{})
 
-	file, err := os.ReadFile("pos.txt")
+	file, err := os.ReadFile(controller.POSFILENAME)
 	if err != nil {
 		zap.L().Error("读文件失败", zap.Error(err))
 
@@ -211,19 +178,18 @@ func InsertHandle(olddata *model.DataChanges, position mysql.Position) {
 }
 
 func UpdateHandle(olddata, newdata *model.DataChanges, position mysql.Position) {
-	//对比数据，看有什么变化
 	project, err := dao.GetProject(newdata.ProjectID)
 	if err != nil {
 		zap.L().Error("获取项目失败:", zap.Error(err))
 		return
 	}
-	//根据bugid获取到bug的关注者，然后根据bug不同的状态通知给不同的人
+
 	userids, err := dao.GetWatchUserID(newdata.ID, "Issue")
 	if err != nil {
 		zap.L().Error("获取关注用户失败:", zap.Error(err))
 		return
 	}
-	//发消息的时候根据bug状态通知到作者或处理者
+
 	status, err := dao.GetStatusByID(newdata.StatusID)
 	if err != nil {
 		zap.L().Error("获取bug状态失败:", zap.Error(err))
@@ -246,13 +212,18 @@ func UpdateHandle(olddata, newdata *model.DataChanges, position mysql.Position) 
 	}
 	takeName, createName, err := GetUserName(newdata.AssignedToID, newdata.AuthorID)
 	if err != nil {
+		zap.L().Error("名字获取失败", zap.Error(err))
 		return
 	}
+	if takeName == "" {
+		takeName = controller.NOSPECIFIED
+	}
+
 	splicingString := utils.SplicingString(phones, "@")
 	data := model.SendMsg{
 		AtMobiles: phones,
 		IsAtAll:   false,
-		Content: fmt.Sprintf("<center><font color=Blue size=6>温馨提醒</font></center>\n"+
+		Content: fmt.Sprintf("### <center><font color=005EFF>温馨提醒</font></center>\n"+
 			"\n--- \n"+
 			"\n> **所属项目：%s**\n"+
 			"\n--- \n"+
@@ -264,13 +235,14 @@ func UpdateHandle(olddata, newdata *model.DataChanges, position mysql.Position) 
 			"\n--- \n"+
 			"\n> **处理人：%s** \n"+
 			"\n--- \n"+
-			"\n @%s \n", project, newdata.Subject, status, createName, takeName, splicingString),
+			"\n <font color=005EFF>@%s</font> \n", project, newdata.Subject, status, createName, takeName, splicingString),
 		MsgType: "actionCard",
-		Url:     "http://192.168.10.6:3000/issues/" + strconv.Itoa(int(newdata.ID)),
+		Url:     init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)),
 	}
-	file, err := os.ReadFile("pos.txt")
+	file, err := os.ReadFile(controller.POSFILENAME)
 	if err != nil {
 		zap.L().Error("读文件失败", zap.Error(err))
+		return
 	}
 	var pos model.Potion
 	json.Unmarshal(file, &pos)
@@ -291,7 +263,6 @@ func UpdateHandle(olddata, newdata *model.DataChanges, position mysql.Position) 
 			zap.L().Error("文件写入失败:", zap.Error(err))
 			return
 		}
-
 	}
 }
 
@@ -308,7 +279,7 @@ func GetData(e *canal.RowsEvent) (*model.DataChanges, *model.DataChanges) {
 	}
 	oldData.AuthorID = e.Rows[0][11].(int32)
 	newData := new(model.DataChanges)
-	if e.Action == "update" {
+	if e.Action == controller.UPDATE {
 		newData.ID = e.Rows[1][0].(int32)
 		newData.ProjectID = e.Rows[1][2].(int32)
 		newData.Subject = e.Rows[1][3].(string)
@@ -316,7 +287,6 @@ func GetData(e *canal.RowsEvent) (*model.DataChanges, *model.DataChanges) {
 		if e.Rows[1][8] == nil {
 			newData.AssignedToID = 0
 		} else {
-			fmt.Println("走着路", e.Rows)
 			newData.AssignedToID = e.Rows[1][8].(int32)
 		}
 		newData.AuthorID = e.Rows[1][11].(int32)
@@ -325,7 +295,7 @@ func GetData(e *canal.RowsEvent) (*model.DataChanges, *model.DataChanges) {
 }
 
 func StroageFile(data string) (err error) {
-	file, err := os.OpenFile("pos.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
+	file, err := os.OpenFile(controller.POSFILENAME, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 	if err != nil {
 		return
 	}
