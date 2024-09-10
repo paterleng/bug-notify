@@ -13,11 +13,21 @@ type Config struct {
 	*LogConfig     `mapstructure:"log"`
 	*MySQLConfig   `mapstructure:"mysql"`
 	*Table         `mapstructure:"table"`
+	*Robot         `mapstructure:"robot"`
+	*Redmine       `mapstructure:"redmine"`
+}
+
+type Redmine struct {
+	URL string `mapstructure:"url"`
 }
 
 type Table struct {
 	TableDB   string   `mapstructure:"table_db"`
 	TableName []string `mapstructure:"table_name"`
+}
+
+type Robot struct {
+	URL string `mapstructure:"url"`
 }
 
 type ProjectConfig struct {

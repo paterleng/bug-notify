@@ -23,4 +23,8 @@ table:
   table_db: "redmine"
   table_name:
     - "issues"
+robot:
+  url: "https://oapi.dingtalk.com/robot/send?access_token=8ff6cde9a01910e897cb6461e75bd515ed9d683cc4924aad9439fda3e9689de1"
+redmine:
+  url: "http://192.168.10.6:3000/issues/"
     
