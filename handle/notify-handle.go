@@ -15,6 +15,7 @@ import (
 	"go.uber.org/zap"
 	"os"
 	"strconv"
+	"sync"
 )
 
 type MyEventHandler struct {
@@ -301,17 +302,17 @@ func StroageFile(data string) (err error) {
 	}
 	defer file.Close()
 	writer := bufio.NewWriter(file)
-
+	mu := sync.Mutex{}
+	mu.Lock()
 	_, err = writer.WriteString(data)
 	if err != nil {
 		return
 	}
-
+	mu.Unlock()
 	err = writer.Flush()
 	if err != nil {
 		return
 	}
-
 	return nil
 }
 
