@@ -12,54 +12,39 @@ import (
 	"fmt"
 	"github.com/go-mysql-org/go-mysql/canal"
 	"github.com/go-mysql-org/go-mysql/mysql"
+	"github.com/go-mysql-org/go-mysql/replication"
 	"go.uber.org/zap"
 	"os"
 	"strconv"
+	"sync"
 )
 
 type MyEventHandler struct {
 	canal.DummyEventHandler
 }
 
+func (h *MyEventHandler) OnPosSynced(header *replication.EventHeader, pos mysql.Position, set mysql.GTIDSet, force bool) error {
+	//存储文件
+	marshal, err := json.Marshal(pos)
+	if err != nil {
+		zap.L().Error("转换失败:", zap.Error(err))
+		return err
+	}
+	err = StroageFile(string(marshal))
+	if err != nil {
+		zap.L().Error("文件写入失败:", zap.Error(err))
+		return err
+	}
+	return nil
+}
+
 func (h *MyEventHandler) OnRow(e *canal.RowsEvent) error {
-	tableMap := make(map[string]int)
-	for _, t := range init_tool.Conf.Table.TableName {
-		tableMap[t]++
+	action := e.Action
+	newdata := GetData(e)
+	switch action {
+	case controller.UPDATE:
+		UpdateHandle(newdata)
 	}
-
-	if _, ok := tableMap[e.Table.Name]; ok {
-		c, err := init_tool.GoMysqlConn()
-		if err != nil {
-			zap.L().Fatal("创建连接失败")
-			return err
-		}
-		defer c.Close()
-
-		c.SetEventHandler(&MyEventHandler{})
-
-		masterPos, err := c.GetMasterPos()
-		var pos uint32
-		if e.Header != nil {
-			pos = e.Header.LogPos
-			fmt.Println("header", e.Header)
-		}
-		p := mysql.Position{
-			Name: masterPos.Name,
-			Pos:  pos,
-		}
-
-		action := e.Action
-		olddata, newdata := GetData(e)
-		switch action {
-		case controller.UPDATE:
-			UpdateHandle(olddata, newdata, p)
-		}
-	}
-	fmt.Println("表%s", e.Table)
-	fmt.Println("数据", e.Rows)
-	fmt.Println("我是action", e.Action)
-	s := e.String()
-	fmt.Println("我是s", s)
 	return nil
 }
 
@@ -91,9 +76,6 @@ func NotifyHandle() {
 		Pos:  pos.Pos,
 	}
 	c.RunFrom(p)
-	//masterPos, err := c.GetMasterPos()
-	//c.RunFrom(masterPos)
-
 }
 
 func Ttttt() {
@@ -118,66 +100,7 @@ func Ttttt() {
 	}
 }
 
-func InsertHandle(olddata *model.DataChanges, position mysql.Position) {
-	//对比数据，看有什么变化
-	//project, err := dao.GetProject(olddata.ProjectID)
-	//if err != nil {
-	//	zap.L().Error("获取项目失败:", zap.Error(err))
-	//	return
-	//}
-	//phone, err := dao.GetPhoneByUserID(olddata.AssignedToID)
-	//if err != nil {
-	//	return
-	//}
-	//takeName, createName, err := GetUserName(olddata.AssignedToID, olddata.AuthorID)
-	//if err != nil {
-	//	return
-	//}
-	//data := model.SendMsg{
-	//	AtMobiles: []string{phone},
-	//	IsAtAll:   false,
-	//	Content: fmt.Sprintf(
-	//		"<center><font color=Blue size=5>温馨提醒</font></center>"+
-	//			"---"+
-	//			"> **所属项目：%s**"+
-	//			"---"+
-	//			"> **bug主题：%s**"+
-	//			"---"+
-	//			"> **创建人：%s**"+
-	//			"---"+
-	//			"> **处理人：%s**"+
-	//			"---"+
-	//			"\n @%s \n", project, olddata.Subject, createName, takeName, phone),
-	//	MsgType: "actionCard",
-	//	Url:     "http://192.168.10.6:3000/issues/" + strconv.Itoa(int(olddata.ID)),
-	//}
-	//file, err := os.ReadFile("pos.txt")
-	//if err != nil {
-	//	zap.L().Error("读文件失败", zap.Error(err))
-	//}
-	//var pos model.Potion
-	//json.Unmarshal(file, pos)
-	//err = api.SendMessage(data)
-	//if err != nil {
-	//	zap.L().Error("消息发送失败:", zap.Error(err))
-	//	return
-	//}
-	//if pos.Pos != 0 {
-	//	//存储文件
-	//	marshal, err := json.Marshal(position)
-	//	if err != nil {
-	//		zap.L().Error("转换失败:", zap.Error(err))
-	//		return
-	//	}
-	//	err = StroageFile(string(marshal))
-	//	if err != nil {
-	//		zap.L().Error("文件写入失败:", zap.Error(err))
-	//		return
-	//	}
-	//}
-}
-
-func UpdateHandle(olddata, newdata *model.DataChanges, position mysql.Position) {
+func UpdateHandle(newdata *model.DataChanges) {
 	project, err := dao.GetProject(newdata.ProjectID)
 	if err != nil {
 		zap.L().Error("获取项目失败:", zap.Error(err))
@@ -227,9 +150,9 @@ func UpdateHandle(olddata, newdata *model.DataChanges, position mysql.Position) 
 			"\n--- \n"+
 			"\n> **所属项目：%s**\n"+
 			"\n--- \n"+
-			"\n> **bug主题：%s**\n"+
+			"\n> **任务主题：%s**\n"+
 			"\n--- \n"+
-			"\n> **bug状态：%s**\n"+
+			"\n> **任务状态：%s**\n"+
 			"\n--- \n"+
 			"\n> **创建人：%s** \n"+
 			"\n--- \n"+
@@ -239,45 +162,25 @@ func UpdateHandle(olddata, newdata *model.DataChanges, position mysql.Position) 
 		MsgType: "actionCard",
 		Url:     init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)),
 	}
-	file, err := os.ReadFile(controller.POSFILENAME)
-	if err != nil {
-		zap.L().Error("读文件失败", zap.Error(err))
-		return
-	}
-	var pos model.Potion
-	json.Unmarshal(file, &pos)
 	err = api.SendMessage(data)
 	if err != nil {
 		zap.L().Error("消息发送失败:", zap.Error(err))
 		return
 	}
-	if pos.Pos != 0 {
-		//存储文件
-		marshal, err := json.Marshal(position)
-		if err != nil {
-			zap.L().Error("转换失败:", zap.Error(err))
-			return
-		}
-		err = StroageFile(string(marshal))
-		if err != nil {
-			zap.L().Error("文件写入失败:", zap.Error(err))
-			return
-		}
-	}
 }
 
-func GetData(e *canal.RowsEvent) (*model.DataChanges, *model.DataChanges) {
-	oldData := new(model.DataChanges)
-	oldData.ID = e.Rows[0][0].(int32)
-	oldData.ProjectID = e.Rows[0][2].(int32)
-	oldData.Subject = e.Rows[0][3].(string)
-	oldData.StatusID = e.Rows[0][7].(int32)
-	if e.Rows[0][8] != nil {
-		oldData.AssignedToID = e.Rows[0][8].(int32)
-	} else {
-		oldData.AssignedToID = 0
-	}
-	oldData.AuthorID = e.Rows[0][11].(int32)
+func GetData(e *canal.RowsEvent) *model.DataChanges {
+	//oldData := new(model.DataChanges)
+	//oldData.ID = e.Rows[0][0].(int32)
+	//oldData.ProjectID = e.Rows[0][2].(int32)
+	//oldData.Subject = e.Rows[0][3].(string)
+	//oldData.StatusID = e.Rows[0][7].(int32)
+	//if e.Rows[0][8] != nil {
+	//	oldData.AssignedToID = e.Rows[0][8].(int32)
+	//} else {
+	//	oldData.AssignedToID = 0
+	//}
+	//oldData.AuthorID = e.Rows[0][11].(int32)
 	newData := new(model.DataChanges)
 	if e.Action == controller.UPDATE {
 		newData.ID = e.Rows[1][0].(int32)
@@ -291,7 +194,7 @@ func GetData(e *canal.RowsEvent) (*model.DataChanges, *model.DataChanges) {
 		}
 		newData.AuthorID = e.Rows[1][11].(int32)
 	}
-	return oldData, newData
+	return newData
 }
 
 func StroageFile(data string) (err error) {
@@ -301,17 +204,17 @@ func StroageFile(data string) (err error) {
 	}
 	defer file.Close()
 	writer := bufio.NewWriter(file)
-
+	mu := sync.Mutex{}
+	mu.Lock()
 	_, err = writer.WriteString(data)
 	if err != nil {
 		return
 	}
-
+	mu.Unlock()
 	err = writer.Flush()
 	if err != nil {
 		return
 	}
-
 	return nil
 }
 
