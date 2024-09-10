@@ -24,9 +24,9 @@ func GetUserInfoByUserID(id int32) (name model.UserName, err error) {
 	return
 }
 
-func GetStatusNumByID(status_id int, priority_id int) (int64, error) {
-	var a int64
-	err := init_tool.DB.Table("issues").Where("status_id = ? and priority_id = ?", status_id, priority_id).Count(&a).Error
+func GetStatusNumByID(status_id []int) ([]model.TimeData, error) {
+	var a []model.TimeData
+	err := init_tool.DB.Table("issues").Select("status_id, priority_id, count(*) as count").Where("status_id in ?", status_id).Group("priority_id").Group("status_id").Find(&a).Error
 	return a, err
 }
 
