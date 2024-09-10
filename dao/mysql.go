@@ -5,8 +5,8 @@ import (
 	"bug-notify/model"
 )
 
-func GetPhoneByUserID(id int32) (phone string, err error) {
-	err = init_tool.DB.Table("custom_values").Where("customized_id = ?", id).Select("value").Find(&phone).Error
+func GetPhoneByUserID(id []int32) (phone []string, err error) {
+	err = init_tool.DB.Table("custom_values").Where("customized_id in ? and customized_type = ?", id, "Principal").Select("value").Find(&phone).Error
 	return
 }
 
@@ -28,4 +28,10 @@ func GetStatusNumByID(status_id int, priority_id int) (int64, error) {
 	var a int64
 	err := init_tool.DB.Table("issues").Where("status_id = ? and priority_id = ?", status_id, priority_id).Count(&a).Error
 	return a, err
+}
+
+func GetWatchUserID(watchid int32, watchtype string) (userid []int32, err error) {
+	err = init_tool.DB.Table("watchers").Where("watchable_id = ? and watchable_type = ?", watchid, watchtype).Select("user_id").Find(&userid).Error
+	return
+
 }
