@@ -85,31 +85,6 @@ func NotifyHandle() {
 	c.RunFrom(p)
 }
 
-func Ttttt() {
-	var btns []model.ActionBtns
-	btns = append(btns, model.ActionBtns{ActionURL: "http://192.168.10.6:3000/issues/16", Title: "钉钉打开"})
-	btns = append(btns, model.ActionBtns{ActionURL: "dingtalk://dingtalkclient/page/link?url=http://192.168.10.6:3000/issues/16&pc_slide=false", Title: "浏览器打开"})
-	data := model.SendMsg{
-		AtMobiles: []string{"17638641623", "15938479072"},
-		IsAtAll:   false,
-		//AtMobiles: []string{"17638641623"},
-		//IsAtAll:   false,
-		Content:    "bug@17638641623@15938479072",
-		MsgType:    "actionCard",
-		ActionBtns: btns,
-	}
-	//panic("chucuol;")
-	take, _ := dao.GetUserInfoByUserID(12)
-	fmt.Println(take)
-	fmt.Println(data.AtMobiles)
-
-	err := api.SendMessage(data)
-	if err != nil {
-		zap.L().Error("消息发送失败:", zap.Error(err))
-		return
-	}
-}
-
 func UpdateHandle(newdata *model.DataChanges) {
 	project, err := dao.GetProject(newdata.ProjectID)
 	if err != nil {
@@ -151,15 +126,23 @@ func UpdateHandle(newdata *model.DataChanges) {
 	if takeName == "" {
 		takeName = controller.NOSPECIFIED
 	}
-
+	dingdingRobot, err := dao.GetDingRobotByid(newdata.ProjectID)
+	if err != nil {
+		zap.L().Error("机器人获取失败", zap.Error(err))
+		return
+	}
+	if dingdingRobot == "" {
+		zap.L().Error("机器人为空", zap.Error(err))
+		return
+	}
 	splicingString := utils.SplicingString(phones, "@")
-	//"dingtalk://dingtalkclient/page/link?url=" + init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)) + "&pc_slide=true"
 	var btns []model.ActionBtns
 	btns = append(btns, model.ActionBtns{ActionURL: "dingtalk://dingtalkclient/page/link?url=" + init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)) + "&pc_slide=true", Title: "钉钉打开"})
 	btns = append(btns, model.ActionBtns{ActionURL: "dingtalk://dingtalkclient/page/link?url=" + init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)) + "&pc_slide=false", Title: "浏览器打开"})
 	data := model.SendMsg{
-		AtMobiles: phones,
-		IsAtAll:   false,
+		DingRobotURL: dingdingRobot,
+		AtMobiles:    phones,
+		IsAtAll:      false,
 		Content: fmt.Sprintf("### <center><font color=005EFF>温馨提醒</font></center>\n"+
 			"\n--- \n"+
 			"\n> **所属项目：** <font color=#161823>%s</font>\n"+
@@ -185,17 +168,6 @@ func UpdateHandle(newdata *model.DataChanges) {
 }
 
 func GetData(e *canal.RowsEvent) *model.DataChanges {
-	//oldData := new(model.DataChanges)
-	//oldData.ID = e.Rows[0][0].(int32)
-	//oldData.ProjectID = e.Rows[0][2].(int32)
-	//oldData.Subject = e.Rows[0][3].(string)
-	//oldData.StatusID = e.Rows[0][7].(int32)
-	//if e.Rows[0][8] != nil {
-	//	oldData.AssignedToID = e.Rows[0][8].(int32)
-	//} else {
-	//	oldData.AssignedToID = 0
-	//}
-	//oldData.AuthorID = e.Rows[0][11].(int32)
 	newData := new(model.DataChanges)
 	if e.Action == controller.UPDATE {
 		newData.ID = e.Rows[1][0].(int32)

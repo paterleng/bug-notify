@@ -1,7 +1,6 @@
 package api
 
 import (
-	init_tool "bug-notify/init-tool"
 	"bug-notify/model"
 	"bytes"
 	"encoding/json"
@@ -12,7 +11,7 @@ import (
 )
 
 func SendMessage(data model.SendMsg) error {
-	URL := init_tool.Conf.Robot.URL
+	URL := data.DingRobotURL
 	b := []byte{}
 	msg := map[string]interface{}{}
 	//@的人
