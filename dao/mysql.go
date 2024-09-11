@@ -9,6 +9,10 @@ func GetPhoneByUserID(id []int32) (phone []string, err error) {
 	err = init_tool.DB.Table("custom_values").Where("customized_id in ? and customized_type = ?", id, "Principal").Select("value").Find(&phone).Error
 	return
 }
+func GetDingRobotByid(id int32) (dingdingRobot string, err error) {
+	err = init_tool.DB.Table("custom_values").Where("customized_id = ? and customized_type = ?", id, "Project").Select("value").Find(&dingdingRobot).Error
+	return
+}
 
 func GetStatusByID(id int32) (status string, err error) {
 	err = init_tool.DB.Table("issue_statuses").Where("id = ?", id).Select("name").Find(&status).Error

@@ -16,12 +16,13 @@ type DingResponseCommon struct {
 }
 
 type SendMsg struct {
-	AtMobiles  []string `json:"at_mobiles"`
-	MsgType    string   `json:"msgtype"`
-	Url        string   `json:"url"`
-	Content    string   `json:"content"`
-	IsAtAll    bool     `json:"is_at_all"`
-	ActionBtns []ActionBtns
+	AtMobiles    []string `json:"at_mobiles"`
+	MsgType      string   `json:"msgtype"`
+	Url          string   `json:"url"`
+	Content      string   `json:"content"`
+	IsAtAll      bool     `json:"is_at_all"`
+	ActionBtns   []ActionBtns
+	DingRobotURL string `json:"dingRobotURL"`
 }
 type Potion struct {
 	Name string `json:"Name"`

@@ -570,3 +570,14 @@
 {"level":"INFO","time":"2024-09-11T09:17:22.459+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-11T09:17:50.315+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-11T09:19:30.824+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:27:02.253+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:48:37.419+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:49:16.211+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T10:00:12.417+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T10:00:38.981+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T10:05:31.536+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T10:12:05.205+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T10:13:12.524+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T10:16:18.958+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T10:37:02.615+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-11T10:37:27.904+0800","caller":"handle/notify-handle.go:190","msg":"消息发送失败:","error":"Post \"jkhgdjksahguih\": unsupported protocol scheme \"\""}
