@@ -35,10 +35,12 @@ func SendMessage(data model.SendMsg) error {
 		}
 	} else {
 		msg[data.MsgType] = map[string]interface{}{
-			"title":       "bug",
-			"text":        data.Content,
-			"singleTitle": "问题详情",
-			"singleURL":   data.Url,
+			"btnOrientation": 1,
+			"title":          "bug",
+			"text":           data.Content,
+			"btns":           data.ActionBtns,
+			//"singleTitle":    "问题详情",
+			//"singleURL":      data.Url,
 		}
 	}
 
