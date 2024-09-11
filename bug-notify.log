@@ -562,3 +562,11 @@
 {"level":"INFO","time":"2024-09-11T08:58:21.346+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-11T08:59:19.621+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-11T09:06:30.686+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:12:42.304+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:13:58.418+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:15:20.014+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:15:42.420+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:16:39.406+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:17:22.459+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:17:50.315+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:19:30.824+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}

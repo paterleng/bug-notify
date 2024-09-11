@@ -41,5 +41,5 @@ type TimeData struct {
 
 type ActionBtns struct {
 	ActionURL string `json:"actionURL"`
-	Tittle    string `json:"tittle"`
+	Title     string `json:"title"`
 }
