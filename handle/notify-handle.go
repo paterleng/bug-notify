@@ -86,14 +86,17 @@ func NotifyHandle() {
 }
 
 func Ttttt() {
+	var btns []model.ActionBtns
+	btns = append(btns, model.ActionBtns{ActionURL: "http://192.168.10.6:3000/issues/16", Title: "钉钉打开"})
+	btns = append(btns, model.ActionBtns{ActionURL: "dingtalk://dingtalkclient/page/link?url=http://192.168.10.6:3000/issues/16&pc_slide=false", Title: "浏览器打开"})
 	data := model.SendMsg{
 		AtMobiles: []string{"17638641623", "15938479072"},
 		IsAtAll:   false,
 		//AtMobiles: []string{"17638641623"},
 		//IsAtAll:   false,
-		Content: "bug@17638641623@15938479072",
-		MsgType: "actionCard",
-		Url:     "http://192.168.10.6:3000/issues/16",
+		Content:    "bug@17638641623@15938479072",
+		MsgType:    "actionCard",
+		ActionBtns: btns,
 	}
 	//panic("chucuol;")
 	take, _ := dao.GetUserInfoByUserID(12)
@@ -152,8 +155,8 @@ func UpdateHandle(newdata *model.DataChanges) {
 	splicingString := utils.SplicingString(phones, "@")
 	//"dingtalk://dingtalkclient/page/link?url=" + init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)) + "&pc_slide=true"
 	var btns []model.ActionBtns
-	btns = append(btns, model.ActionBtns{ActionURL: init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)), Tittle: "钉钉打开"})
-	btns = append(btns, model.ActionBtns{ActionURL: init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)), Tittle: "浏览器打开"})
+	btns = append(btns, model.ActionBtns{ActionURL: "dingtalk://dingtalkclient/page/link?url=" + init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)) + "&pc_slide=true", Title: "钉钉打开"})
+	btns = append(btns, model.ActionBtns{ActionURL: "dingtalk://dingtalkclient/page/link?url=" + init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)) + "&pc_slide=false", Title: "浏览器打开"})
 	data := model.SendMsg{
 		AtMobiles: phones,
 		IsAtAll:   false,
