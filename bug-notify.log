@@ -551,3 +551,14 @@
 {"level":"ERROR","time":"2024-09-10T20:05:00.390+0800","caller":"bug-notify/main.go:28","msg":"数据中心异常，请联系管理员处理"}
 {"level":"INFO","time":"2024-09-10T20:05:25.828+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-10T20:05:49.559+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T08:25:43.848+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T08:28:43.080+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T08:29:08.335+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T08:29:52.508+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T08:30:21.313+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T08:54:01.031+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T08:54:51.247+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T08:57:39.417+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T08:58:21.346+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T08:59:19.621+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T09:06:30.686+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}

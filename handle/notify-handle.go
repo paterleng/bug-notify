@@ -23,6 +23,13 @@ type MyEventHandler struct {
 	canal.DummyEventHandler
 }
 
+func (h *MyEventHandler) OnRotate(header *replication.EventHeader, rotateEvent *replication.RotateEvent) error {
+	fmt.Println(header)
+	fmt.Println(rotateEvent)
+	return nil
+
+}
+
 func (h *MyEventHandler) OnPosSynced(header *replication.EventHeader, pos mysql.Position, set mysql.GTIDSet, force bool) error {
 	//存储文件
 	marshal, err := json.Marshal(pos)
@@ -143,24 +150,29 @@ func UpdateHandle(newdata *model.DataChanges) {
 	}
 
 	splicingString := utils.SplicingString(phones, "@")
+	//"dingtalk://dingtalkclient/page/link?url=" + init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)) + "&pc_slide=true"
+	var btns []model.ActionBtns
+	btns = append(btns, model.ActionBtns{ActionURL: init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)), Tittle: "钉钉打开"})
+	btns = append(btns, model.ActionBtns{ActionURL: init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)), Tittle: "浏览器打开"})
 	data := model.SendMsg{
 		AtMobiles: phones,
 		IsAtAll:   false,
 		Content: fmt.Sprintf("### <center><font color=005EFF>温馨提醒</font></center>\n"+
 			"\n--- \n"+
-			"\n> **所属项目：%s**\n"+
+			"\n> **所属项目：** <font color=#161823>%s</font>\n"+
 			"\n--- \n"+
-			"\n> **任务主题：%s**\n"+
+			"\n> **任务主题：** <font color=#161823>%s</font>\n"+
 			"\n--- \n"+
-			"\n> **任务状态：%s**\n"+
+			"\n> **任务状态：** <font color=#161823>%s</font>\n"+
 			"\n--- \n"+
-			"\n> **创建人：%s** \n"+
+			"\n> **创建人：** <font color=#161823>%s</font>\n"+
 			"\n--- \n"+
-			"\n> **处理人：%s** \n"+
+			"\n> **处理人：** <font color=#161823>%s</font>\n"+
 			"\n--- \n"+
 			"\n <font color=005EFF>@%s</font> \n", project, newdata.Subject, status, createName, takeName, splicingString),
-		MsgType: "actionCard",
-		Url:     init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)),
+		MsgType:    "actionCard",
+		Url:        init_tool.Conf.Redmine.URL + strconv.Itoa(int(newdata.ID)),
+		ActionBtns: btns,
 	}
 	err = api.SendMessage(data)
 	if err != nil {
