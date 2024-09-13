@@ -28,3 +28,5 @@ const NOSPECIFIED = "未指定"
 const POSFILENAME = "pos.txt"
 
 const UPDATE = "update"
+const INSERT = "insert"
+const DELETE = "delete"

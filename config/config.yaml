@@ -2,7 +2,7 @@ project:
   name: "bug-notify"
   mode: "dev"
   address: "127.0.0.1"
-  port: "8080"
+  port: "9990"
   starttime: "2024-09-04"
   machineid: 1
 log:

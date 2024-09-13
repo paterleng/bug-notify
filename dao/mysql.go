@@ -37,5 +37,4 @@ func GetStatusNumByID(status_id []int) ([]model.TimeData, error) {
 func GetWatchUserID(watchid int32, watchtype string) (userid []int32, err error) {
 	err = init_tool.DB.Table("watchers").Where("watchable_id = ? and watchable_type = ?", watchid, watchtype).Select("user_id").Find(&userid).Error
 	return
-
 }

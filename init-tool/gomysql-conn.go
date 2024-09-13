@@ -16,6 +16,7 @@ func GoMysqlConn() (*canal.Canal, error) {
 	for _, name := range Conf.Table.TableName {
 		tables = append(tables, Conf.Table.TableDB+"."+name)
 	}
+	cfg.Dump.ExecutionPath = ""
 	cfg.IncludeTableRegex = tables
 
 	c, err := canal.NewCanal(cfg)
