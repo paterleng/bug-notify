@@ -581,3 +581,64 @@
 {"level":"INFO","time":"2024-09-11T10:16:18.958+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-11T10:37:02.615+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"ERROR","time":"2024-09-11T10:37:27.904+0800","caller":"handle/notify-handle.go:190","msg":"消息发送失败:","error":"Post \"jkhgdjksahguih\": unsupported protocol scheme \"\""}
+{"level":"INFO","time":"2024-09-11T10:57:53.467+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-11T10:58:56.430+0800","caller":"handle/notify-handle.go:159","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"INFO","time":"2024-09-11T10:59:51.669+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-11T11:00:00.531+0800","caller":"handle/notify-handle.go:159","msg":"消息发送失败:","error":"description:机器人发送签名过期;solution:签名生成时间和发送时间请保持在 timestampms 以内;"}
+{"level":"INFO","time":"2024-09-11T11:00:34.647+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-11T11:00:41.945+0800","caller":"handle/notify-handle.go:159","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"INFO","time":"2024-09-11T11:01:10.125+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-11T11:01:14.089+0800","caller":"handle/notify-handle.go:159","msg":"消息发送失败:","error":"description:机器人发送签名过期;solution:签名生成时间和发送时间请保持在 timestampms 以内;"}
+{"level":"INFO","time":"2024-09-11T11:11:56.705+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-11T11:12:07.030+0800","caller":"handle/notify-handle.go:160","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"INFO","time":"2024-09-11T11:12:58.993+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:16:22.422+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:17:09.660+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:17:55.959+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:18:48.480+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:19:42.944+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:24:21.600+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:25:43.297+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:26:11.292+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:26:35.996+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:28:06.725+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:30:04.480+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:33:56.552+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:38:01.961+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:38:54.459+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:39:22.922+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:40:11.124+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T11:40:43.947+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-11T20:30:11.957+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-11T20:30:14.029+0800","caller":"handle/notify-handle.go:128","msg":"机器人为空"}
+{"level":"ERROR","time":"2024-09-11T20:30:14.067+0800","caller":"handle/notify-handle.go:128","msg":"机器人为空"}
+{"level":"ERROR","time":"2024-09-11T20:30:14.118+0800","caller":"handle/notify-handle.go:128","msg":"机器人为空"}
+{"level":"INFO","time":"2024-09-12T20:13:31.478+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-12T20:13:32.743+0800","caller":"handle/notify-handle.go:128","msg":"机器人为空"}
+{"level":"ERROR","time":"2024-09-12T20:13:32.940+0800","caller":"handle/notify-handle.go:128","msg":"机器人为空"}
+{"level":"ERROR","time":"2024-09-12T20:13:33.158+0800","caller":"handle/notify-handle.go:128","msg":"机器人为空"}
+{"level":"ERROR","time":"2024-09-12T20:13:33.399+0800","caller":"handle/notify-handle.go:128","msg":"机器人为空"}
+{"level":"ERROR","time":"2024-09-12T20:13:33.530+0800","caller":"handle/notify-handle.go:128","msg":"机器人为空"}
+{"level":"ERROR","time":"2024-09-12T20:14:58.499+0800","caller":"handle/notify-handle.go:160","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"INFO","time":"2024-09-12T20:15:37.738+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-12T20:16:09.746+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-12T21:02:05.327+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-12T21:16:35.908+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-12T21:16:37.534+0800","caller":"handle/notify-handle.go:160","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-12T21:16:37.910+0800","caller":"handle/notify-handle.go:160","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-12T21:16:38.067+0800","caller":"handle/notify-handle.go:160","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-12T21:16:38.240+0800","caller":"handle/notify-handle.go:160","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-12T21:16:38.407+0800","caller":"handle/notify-handle.go:160","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-12T21:16:38.559+0800","caller":"handle/notify-handle.go:160","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-12T21:16:38.777+0800","caller":"handle/notify-handle.go:160","msg":"消息发送失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"INFO","time":"2024-09-12T21:49:36.438+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-12T21:59:27.667+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-13T08:53:35.902+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-13T08:55:03.625+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-13T09:43:11.530+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-13T09:43:42.314+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-13T09:45:09.552+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-13T09:49:31.313+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-13T09:49:44.424+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-13T09:55:45.906+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-13T09:55:58.758+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
