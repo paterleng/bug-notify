@@ -26,11 +26,9 @@ var P = []int{NOTPROCESSEDID, PROCESSINGID}
 func TimeingTasks() {
 	c := cron.New()
 	c.AddFunc("0 21 * * *", func() {
-		//c.AddFunc("0 21 * * *", func() {
 		a, err := dao.GetStatusNumByID(P)
 		if err != nil {
 			zap.L().Error("获取status_id为2的数量失败:", zap.Error(err))
-			//fmt.Println("sssss \n")
 			return
 		}
 		maps := map[int]map[int]int{}
@@ -62,21 +60,12 @@ func TimeingTasks() {
 		nowTime := time.Now().Format("2006-01-02")
 
 		content = fmt.Sprintf(content, nowTime, maps[1][2], maps[1][3], maps[2][2], maps[2][3], maps[3][2], maps[3][3])
-		//content := "## 事务状态统计 \n"
-		//content = content + "**重要未处理**：" + strconv.Itoa(int(a[0][0]))
-		//content = content + "**重要处理中**：" + strconv.Itoa(int(a[0][1]))
-		//content = content + "\n \n**中等未处理**：" + strconv.Itoa(int(a[1][0]))
-		//content = content + "**中等处理中**：" + strconv.Itoa(int(a[1][1]))
-		//content = content + "\n \n**普通未处理**：" + strconv.Itoa(int(a[2][0]))
-		//content = content + "**普通处理中**：" + strconv.Itoa(int(a[2][1]))
-		//content = content + "\n \n @所有人"
 
 		data := model.SendMsg{
 			Content: content,
 			IsAtAll: true,
 			MsgType: "markdown",
 		}
-		//fmt.Println(data.MsgType)
 		api.SendMessage(data)
 	})
 	c.Start()

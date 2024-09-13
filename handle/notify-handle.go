@@ -54,10 +54,6 @@ func (h *MyEventHandler) OnRow(e *canal.RowsEvent) error {
 	return nil
 }
 
-func (h *MyEventHandler) String() string {
-	return "MyEventHandler"
-}
-
 func NotifyHandle() {
 	c, err := init_tool.GoMysqlConn()
 	if err != nil {
@@ -107,7 +103,11 @@ func NotifyHandle() {
 		Name: pos.Name,
 		Pos:  pos.Pos,
 	}
-	c.RunFrom(p)
+	err = c.RunFrom(p)
+	if err != nil {
+		zap.L().Error("启动失败", zap.Error(err))
+		return
+	}
 }
 
 func InsertHandle(newdata *model.DataChanges) {
