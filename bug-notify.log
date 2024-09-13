@@ -642,3 +642,4 @@
 {"level":"INFO","time":"2024-09-13T09:49:44.424+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
 {"level":"INFO","time":"2024-09-13T09:55:45.906+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-13T09:55:58.758+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-13T10:03:39.134+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}

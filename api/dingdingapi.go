@@ -38,8 +38,6 @@ func SendMessage(data model.SendMsg) error {
 			"title":          "任务",
 			"text":           data.Content,
 			"btns":           data.ActionBtns,
-			//"singleTitle":    "问题详情",
-			//"singleURL":      data.Url,
 		}
 	}
 
