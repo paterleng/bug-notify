@@ -44,3 +44,8 @@ type ActionBtns struct {
 	ActionURL string `json:"actionURL"`
 	Title     string `json:"title"`
 }
+
+type RobotUrl struct {
+	Value        string `json:"value"`
+	CustomizedId int64  `json:"customized_id"`
+}

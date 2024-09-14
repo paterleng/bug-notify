@@ -28,13 +28,23 @@ func GetUserInfoByUserID(id int32) (name model.UserName, err error) {
 	return
 }
 
-func GetStatusNumByID(status_id []int) ([]model.TimeData, error) {
+func GetStatusNumByID(statusId []int, projectId int64) ([]model.TimeData, error) {
 	var a []model.TimeData
-	err := init_tool.DB.Table("issues").Select("status_id, priority_id, count(*) as count").Where("status_id in ?", status_id).Group("priority_id").Group("status_id").Find(&a).Error
+	err := init_tool.DB.Table("issues").Select("status_id, priority_id, count(*) as count").Where("status_id in ? and project_id = ?", statusId, projectId).Group("priority_id").Group("status_id").Find(&a).Error
 	return a, err
 }
 
 func GetWatchUserID(watchid int32, watchtype string) (userid []int32, err error) {
 	err = init_tool.DB.Table("watchers").Where("watchable_id = ? and watchable_type = ?", watchid, watchtype).Select("user_id").Find(&userid).Error
 	return
+}
+
+func GetAllProjectID() (ids []int64, err error) {
+	err = init_tool.DB.Table("projects").Select("id").Find(&ids).Error
+	return
+}
+func GetURLByProjectId(ids []int64) (urls []model.RobotUrl, err error) {
+	err = init_tool.DB.Table("custom_values").Where("customized_id in ? and customized_type = ?", ids, "Principal").Select("customized_id,value").Find(&urls).Error
+	return
+
 }
