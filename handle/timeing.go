@@ -23,6 +23,7 @@ var P = []int{NOTPROCESSEDID, PROCESSINGID}
 func TimeingTasks() {
 	c := cron.New()
 	c.AddFunc("0 21 * * *", func() {
+		//c.AddFunc("@every 3s", func() {
 		//获取所有项目id
 		ids, err := dao.GetAllProjectID()
 		if err != nil {
