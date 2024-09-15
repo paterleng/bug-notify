@@ -699,3 +699,82 @@
 {"level":"ERROR","time":"2024-09-15T09:35:31.055+0800","caller":"handle/timeing.go:89","msg":" 定时任务发送消息失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
 {"level":"ERROR","time":"2024-09-15T09:35:34.056+0800","caller":"handle/timeing.go:89","msg":" 定时任务发送消息失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
 {"level":"INFO","time":"2024-09-15T09:36:17.579+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T09:57:31.327+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-15T09:57:34.599+0800","caller":"handle/timeing.go:89","msg":" 定时任务发送消息失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-15T09:57:37.082+0800","caller":"handle/timeing.go:89","msg":" 定时任务发送消息失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-15T09:57:40.058+0800","caller":"handle/timeing.go:89","msg":" 定时任务发送消息失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-15T09:57:43.077+0800","caller":"handle/timeing.go:89","msg":" 定时任务发送消息失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-15T09:57:46.074+0800","caller":"handle/timeing.go:89","msg":" 定时任务发送消息失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"ERROR","time":"2024-09-15T09:57:49.066+0800","caller":"handle/timeing.go:89","msg":" 定时任务发送消息失败:","error":"description:机器人发送签名不匹配;solution:请确认签名和生成签名的时间戳必须都放在调用的网址中，请确认机器人的密钥加密和填写正确;link:请参考本接口对应文档获得具体要求，或者在https://open.dingtalk.com/document/  搜索相关文档;"}
+{"level":"INFO","time":"2024-09-15T09:58:01.178+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T09:59:04.627+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-15T09:59:08.223+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"ERROR","time":"2024-09-15T09:59:11.068+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"ERROR","time":"2024-09-15T09:59:14.078+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"ERROR","time":"2024-09-15T09:59:17.057+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"ERROR","time":"2024-09-15T09:59:20.070+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"ERROR","time":"2024-09-15T09:59:23.053+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"ERROR","time":"2024-09-15T09:59:26.076+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"ERROR","time":"2024-09-15T09:59:29.074+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"ERROR","time":"2024-09-15T09:59:32.075+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"ERROR","time":"2024-09-15T09:59:35.064+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"ERROR","time":"2024-09-15T09:59:38.070+0800","caller":"handle/timeing.go:88","msg":" 定时任务发送消息失败:","error":"错误描述:关键词不匹配;解决方案:请联系群管理员查看此机器人的关键词，并在发送的信息中包含此关键词;"}
+{"level":"INFO","time":"2024-09-15T09:59:45.169+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T10:01:15.725+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T10:01:59.486+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T10:03:32.086+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T10:09:47.693+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T10:09:57.517+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T10:11:33.949+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T10:13:30.235+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T10:19:47.349+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T10:20:45.975+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T10:21:40.598+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T14:34:48.829+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T14:34:49.597+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T14:34:49.725+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T14:35:15.512+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T14:36:20.647+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-15T14:37:24.037+0800","caller":"handle/timeing.go:102","msg":" 定时任务发送消息失败:","error":"send too fast, exceed 20 times per minute"}
+{"level":"INFO","time":"2024-09-15T14:39:46.130+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T14:53:50.495+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T14:54:31.204+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T15:49:32.705+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T15:50:05.257+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T15:50:35.551+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T15:51:20.568+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T16:09:36.491+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T16:09:36.633+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:09:36.634+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:09:37.239+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:09:37.241+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:09:37.365+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:09:37.368+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:11:19.163+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:12:11.971+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T16:14:12.062+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T16:14:25.541+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:15:21.649+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T16:15:48.428+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:16:38.146+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T16:16:47.190+0800","caller":"handle/notify-handle.go:230","msg":"任务没有处理者，也没有关注者，不做通知。"}
+{"level":"INFO","time":"2024-09-15T16:16:50.336+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:17:31.948+0800","caller":"handle/notify-handle.go:230","msg":"任务没有处理者，也没有关注者，不做通知。"}
+{"level":"INFO","time":"2024-09-15T16:17:31.949+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:18:05.926+0800","caller":"handle/notify-handle.go:230","msg":"任务没有处理者，也没有关注者，不做通知。"}
+{"level":"INFO","time":"2024-09-15T16:18:31.006+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:19:21.631+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T16:20:16.464+0800","caller":"handle/notify-handle.go:230","msg":"任务没有处理者，也没有关注者，不做通知。"}
+{"level":"INFO","time":"2024-09-15T16:20:16.464+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:20:20.740+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T16:20:44.087+0800","caller":"handle/notify-handle.go:230","msg":"任务没有处理者，也没有关注者，不做通知。"}
+{"level":"INFO","time":"2024-09-15T16:20:44.745+0800","caller":"handle/notify-handle.go:122","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:22:39.561+0800","caller":"handle/notify-handle.go:230","msg":"任务没有处理者，也没有关注者，不做通知。"}
+{"level":"INFO","time":"2024-09-15T16:22:46.659+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T16:23:29.124+0800","caller":"handle/notify-handle.go:228","msg":"任务没有处理者，也没有关注者，不做通知。"}
+{"level":"INFO","time":"2024-09-15T16:24:46.863+0800","caller":"handle/notify-handle.go:228","msg":"任务没有处理者，也没有关注者，不做通知。"}
+{"level":"INFO","time":"2024-09-15T16:24:46.863+0800","caller":"handle/notify-handle.go:120","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:25:02.408+0800","caller":"handle/notify-handle.go:228","msg":"任务没有处理者，也没有关注者，不做通知。"}
+{"level":"INFO","time":"2024-09-15T16:27:24.059+0800","caller":"handle/notify-handle.go:120","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-15T16:33:25.860+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-15T16:35:10.959+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}

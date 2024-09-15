@@ -41,8 +41,6 @@ func (h *MyEventHandler) OnPosSynced(header *replication.EventHeader, pos mysql.
 
 func (h *MyEventHandler) OnRow(e *canal.RowsEvent) error {
 	action := e.Action
-	fmt.Println("我是action", e.Action)
-	fmt.Println("我是rows", e.Rows)
 	olddata, newdata := GetData(e)
 	//根据状态判断是否发送通知，如果是update行为，关注状态是否有变化，如果没有变化就不通知
 	switch action {
@@ -212,15 +210,26 @@ func Handle(newdata *model.DataChanges) (err error) {
 	}
 
 	//发消息的时候根据bug状态通知到作者或处理者
-	//3、4、5、6通知创建者
-	//1、2、7 通知处理者
+	//如果在任务创建的时候没有处理者也没有关注者，就不发送消息通知
+	//3、4、5、6通知创建者，但不通知处理者
+	//1、2、7 通知处理者,但不通知作者
+	var newUserIds []int32
 	if controller.CreateMap[newdata.StatusID] {
 		userids = append(userids, newdata.AuthorID)
+		//给处理者去掉
+		newUserIds = utils.DeleteSlice(userids, newdata.AssignedToID)
 	} else if controller.ProcessorMap[newdata.StatusID] {
 		userids = append(userids, newdata.AssignedToID)
+		//给作者去掉
+		newUserIds = utils.DeleteSlice(userids, newdata.AuthorID)
 	}
 
-	phones, err := dao.GetPhoneByUserID(userids)
+	if newdata.AssignedToID == 0 && len(newUserIds) == 0 {
+		zap.L().Info("任务没有处理者，也没有关注者，不做通知。")
+		return
+	}
+
+	phones, err := dao.GetPhoneByUserID(newUserIds)
 	if err != nil {
 		zap.L().Error("获取手机号失败:", zap.Error(err))
 		return

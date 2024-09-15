@@ -46,5 +46,4 @@ func GetAllProjectID() (ids []int64, err error) {
 func GetURLByProjectId(ids []int64) (urls []model.RobotUrl, err error) {
 	err = init_tool.DB.Table("custom_values").Where("customized_id in ? and customized_type = ?", ids, "Project").Select("customized_id,value").Find(&urls).Error
 	return
-
 }
