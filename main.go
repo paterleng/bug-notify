@@ -15,7 +15,7 @@ func main() {
 	}
 	engine := gin.Default()
 	//启动一个协程用于执行binlog
-	//go safelyRun(handle.NotifyHandle)
+	go safelyRun(handle.NotifyHandle)
 	go safelyRun(handle.TimeingTasks)
 	engine.Run(init_tool.Conf.ProjectConfig.Address + ":" + init_tool.Conf.ProjectConfig.Port)
 }
