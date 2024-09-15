@@ -26,3 +26,15 @@ func DingSecret(secret string) (sign string) {
 	sign = "&timestamp=" + timestamp + "&sign=" + signature
 	return
 }
+
+// 移除切片元素
+func DeleteSlice(s []int32, elem int32) []int32 {
+	j := 0
+	for _, v := range s {
+		if v != elem && v != 0 {
+			s[j] = v
+			j++
+		}
+	}
+	return s[:j]
+}
