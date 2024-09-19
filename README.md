@@ -9,7 +9,7 @@ kubectl apply -f yaml文件路径
 ```
 ### docker部署
 ```
-docker build
+docker build -t <tag> .
 docker run 
 ```
 ### 二进制运行
