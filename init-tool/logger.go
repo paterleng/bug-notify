@@ -11,7 +11,6 @@ var lg *zap.Logger
 
 // Init 初始化lg
 func LoggerInit() (err error) {
-
 	writeSyncer := getLogWriter(Conf.LogConfig.Filename, Conf.LogConfig.MaxSize, Conf.LogConfig.MaxBackups, Conf.LogConfig.MaxAge)
 	encoder := getEncoder()
 	var l = new(zapcore.Level)

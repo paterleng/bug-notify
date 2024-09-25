@@ -40,22 +40,21 @@ func TimeingTasks() {
 		}
 		for _, id := range ids {
 			a, err := dao.GetStatusNumByID(P, id)
+			if len(a) == 0 {
+				//没有任务要处理,直接跳过
+				continue
+			}
+
 			if err != nil {
 				zap.L().Error("查询数量失败:", zap.Error(err))
 				return
 			}
-			maps := map[int]map[int]int{}
-			for _, value := range a {
-				childMap := make(map[int]int)
-				childMap[value.StatusId] = int(value.Count)
-				maps[value.PriorityId] = childMap
-			}
+			maps := make(map[int]map[int]int)
 			for i := 0; i < 3; i++ {
-				for j := 0; j < 2; j++ {
-					if _, ok := maps[i+1][j+1]; !ok {
-						maps[i+1][j+1] = 0
-					}
-				}
+				maps[i+1] = make(map[int]int)
+			}
+			for _, value := range a {
+				maps[value.PriorityId][value.StatusId] = int(value.Count)
 			}
 			content := "# %s 任务状态统计 \n" +
 				"\n| **级别** | **未处理** | **处理中** | " +

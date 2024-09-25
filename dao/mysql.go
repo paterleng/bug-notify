@@ -30,7 +30,7 @@ func GetUserInfoByUserID(id int32) (name model.UserName, err error) {
 
 func GetStatusNumByID(statusId []int, projectId int64) ([]model.TimeData, error) {
 	var a []model.TimeData
-	err := init_tool.DB.Table("issues").Select("status_id, priority_id, count(*) as count").Where("status_id in ? and project_id = ?", statusId, projectId).Group("priority_id").Group("status_id").Find(&a).Error
+	err := init_tool.DB.Debug().Table("issues").Select("status_id, priority_id, count(*) as count").Where("status_id in ? and project_id = ?", statusId, projectId).Group("priority_id").Group("status_id").Find(&a).Error
 	return a, err
 }
 
