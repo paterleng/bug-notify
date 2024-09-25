@@ -799,3 +799,35 @@
 {"level":"INFO","time":"2024-09-15T17:17:16.203+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-15T17:18:50.563+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
 {"level":"INFO","time":"2024-09-15T17:20:11.369+0800","caller":"init-tool/logger.go:36","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T08:53:20.333+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T08:53:22.228+0800","caller":"handle/notify-handle.go:120","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-25T08:53:22.903+0800","caller":"handle/notify-handle.go:120","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-25T08:53:48.426+0800","caller":"handle/notify-handle.go:120","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-25T08:53:48.432+0800","caller":"handle/notify-handle.go:120","msg":"更新事件，状态没有变化，不做处理"}
+{"level":"INFO","time":"2024-09-25T08:54:33.759+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-25T08:56:23.098+0800","caller":"handle/timeing.go:28","msg":"获取项目id失败:","error":"bad connection"}
+{"level":"INFO","time":"2024-09-25T09:00:28.517+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:01:18.392+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:04:37.381+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:08:04.329+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:11:11.451+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:14:03.040+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:18:16.380+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:22:01.910+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:22:21.269+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:23:37.425+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:31:46.095+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:34:41.020+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:35:43.680+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:36:22.935+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"ERROR","time":"2024-09-25T09:37:33.601+0800","caller":"handle/timeing.go:89","msg":" 定时任务发送消息失败:","error":"Post \"https://oapi.dingtalk.com/robot/send?access_token=8ff6cde9a01910e897cb6461e75bd515ed9d683cc4924aad9439fda3e9689de1&timestamp=1727228191641&sign=s%2F9HIpthbfp5j9JpnsfYHMDMIi%2F08cktkKHAFLH7ltc%3D\": dial tcp: lookup oapi.dingtalk.com: i/o timeout"}
+{"level":"INFO","time":"2024-09-25T09:37:40.144+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:40:38.214+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:41:15.304+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:43:08.976+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:46:20.287+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T09:53:15.253+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T10:23:38.971+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T10:24:21.539+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T10:25:34.552+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
+{"level":"INFO","time":"2024-09-25T10:26:00.528+0800","caller":"init-tool/logger.go:35","msg":"init logger success"}
